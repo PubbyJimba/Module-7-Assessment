@@ -69,6 +69,19 @@ function isPangram(sentence) {
   return true;
 }
 
+// Takes an array of words. Returns the length of the longest one.
+function longestWord(words) {
+  let longestLength = 0;
+
+  for (let i = 0; i < words.length; i++) {
+    if (words[i].length > longestLength) {
+      longestLength = words[i].length;
+    }
+  }
+
+  return longestLength;
+}
+
 const tinyArray = getSizedArray(10);
 const smallArray = getSizedArray(100);
 const mediumArray = getSizedArray(1000);
@@ -77,6 +90,7 @@ const extraLargeArray = getSizedArray(100000);
 const numberArray = [0, 1, 2, 3, -2];
 const word = 'moonday';
 const sentence = 'Mr. Jock, TV quiz PhD., bags few lynx';
+const wordArray = ['hi', 'hello', 'six', 'seventeen'];
 
 // How long does it take to double every number in a given
 // array?
@@ -106,6 +120,11 @@ perf.start();
 isPangram(sentence);
 let resultsPangram = perf.stop();
 
+// Execution time for longestWord function.
+perf.start();
+longestWord(wordArray);
+let resultsLongest = perf.stop();
+
 console.log('Results for the doubler functions');
 console.log('insert', resultsInsert.preciseWords);
 console.log('append', resultsAppend.preciseWords);
@@ -121,3 +140,7 @@ console.log(resultsUnique.preciseWords);
 console.log(`Results for isPangram function with ${sentence}`);
 console.log(isPangram(sentence));
 console.log(resultsPangram.preciseWords);
+
+console.log(`Results for longestWord function with ${wordArray}`);
+console.log(longestWord(wordArray));
+console.log(resultsLongest.preciseWords);
